@@ -24,26 +24,56 @@ describe Romaji do
   
   describe Romaji::StringExtension do
     before  do
-      @sushi = 'ｽｼ'
-      @abc = 'ａＢC'
-      @sushi.extend(Romaji::StringExtension)
-      @abc.extend(Romaji::StringExtension)
+      @kana = 'ｽｼ'
+      @romaji = 'ｓＵsｈi'
+      @kana.extend(Romaji::StringExtension)
+      @romaji.extend(Romaji::StringExtension)
     end
 
     it 'should extend String#normalize' do
-      @sushi.normalize.should == 'スシ'
-      @sushi.should == 'ｽｼ'
+      @kana.normalize.should == 'スシ'
+      @kana.should == 'ｽｼ'
 
-      @abc.normalize.should == 'abc'
-      @abc.should == 'ａＢC'
+      @romaji.normalize.should == 'sushi'
+      @romaji.should == 'ｓＵsｈi'
     end
 
     it 'should extend String#normalize!' do
-      @sushi.normalize!
-      @sushi.should == 'スシ'
+      @kana.normalize!
+      @kana.should == 'スシ'
 
-      @abc.normalize!
-      @abc.should == 'abc'
+      @romaji.normalize!
+      @romaji.should == 'sushi'
+    end
+
+    it 'should extend String#kana' do
+      @kana.kana.should == 'スシ'
+      @romaji.kana.should == 'スシ'
+    end
+
+    it 'should extend String#kana!' do
+      @kana.kana!
+      @kana.should == 'スシ'
+
+      @romaji.kana!
+      @romaji.should == 'スシ'
+    end
+
+    it 'should extend String#romaji' do
+      pending 'not impl\'ed'
+
+      @kana.romaji.should 'sushi'
+      @romaji.romaji.should == 'sushi'
+    end
+
+    it 'should extend String#romaji!' do
+      pending 'not impl\'ed'
+
+      @kana.romaji! 'sushi'
+      @kana.should == 'sushi'
+
+      @romaji.romaji!
+      @romaji.should == 'sushi'
     end
   end
 end
