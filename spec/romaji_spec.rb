@@ -7,6 +7,7 @@ describe Romaji do
   context 'transliterate from romaji to kana' do
     it 'should transliterate' do
       Romaji.romaji2kana('kyoumoshinaitone').should == 'キョウモシナイトネ'
+      Romaji.romaji2kana('今日もshinaitone').should == '今日モシナイトネ'
       Romaji.romaji2kana('SushiNoTabetas').should == 'スシノタベタs'
     end
 
@@ -17,8 +18,6 @@ describe Romaji do
 
   it 'should transliterate from kana to romaji' do
     Romaji.kana2romaji('キョウモシナイトネ').should == 'kyoumoshinaitone'
-
-    pending 'not impl\'ed'
     Romaji.kana2romaji('すしのたべたさ').should == 'sushinotabetasa'
   end
   
@@ -60,16 +59,12 @@ describe Romaji do
     end
 
     it 'should extend String#romaji' do
-      pending 'not impl\'ed'
-
-      @kana.romaji.should 'sushi'
+      @kana.romaji.should =='sushi'
       @romaji.romaji.should == 'sushi'
     end
 
     it 'should extend String#romaji!' do
-      pending 'not impl\'ed'
-
-      @kana.romaji! 'sushi'
+      @kana.romaji!
       @kana.should == 'sushi'
 
       @romaji.romaji!

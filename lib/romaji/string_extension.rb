@@ -23,7 +23,7 @@ module Romaji
     end
 
     def romaji!
-      Romaji.replace(self.normalize)
+      self.replace(self.romaji)
     end
   end
 end
