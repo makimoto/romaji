@@ -9,6 +9,9 @@ describe Romaji do
       Romaji.romaji2kana('kyoumoshinaitone').should == 'キョウモシナイトネ'
       Romaji.romaji2kana('今日もshinaitone').should == '今日モシナイトネ'
       Romaji.romaji2kana('SushiNoTabetas').should == 'スシノタベタs'
+      Romaji.romaji2kana('shimbashi').should == 'シンバシ'
+      Romaji.romaji2kana('kinkakuji').should == 'キンカクジ'
+      Romaji.romaji2kana('tottori').should == 'トットリ'
     end
 
     it 'should transliterate with kana_type' do
@@ -19,6 +22,9 @@ describe Romaji do
   it 'should transliterate from kana to romaji' do
     Romaji.kana2romaji('キョウモシナイトネ').should == 'kyoumoshinaitone'
     Romaji.kana2romaji('すしのたべたさ').should == 'sushinotabetasa'
+    Romaji.kana2romaji('シンバシ').should == 'shimbashi'
+    Romaji.kana2romaji('キンカクジ').should == 'kinkakuji'
+    Romaji.kana2romaji('トットリ').should == 'tottori'
   end
   
   describe Romaji::StringExtension do

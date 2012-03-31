@@ -11,9 +11,24 @@ module Romaji
     pos = 0
     k = nil
     kana = ''
+    chars =  scoped_kcode('u'){text.split(//)}
     while true
-      Romaji::ROMAJI_MAX_LENGTH.downto(1) do |t|
-        substr =  scoped_kcode('u'){text.split(//).slice(pos, t).join}
+      # ン
+      if chars[pos] == 'm' && ['p', 'b', 'm'].include?(chars[pos + 1])
+        kana += 'ン'
+        pos += 1
+        next
+      end
+
+      # ッ
+      if chars[pos] == chars[pos + 1] && !['a', 'i', 'u', 'e', 'o', 'n'].include?(chars[pos])
+        kana += 'ッ'
+        pos += 1
+        next
+      end
+
+      ROMAJI_MAX_LENGTH.downto(1) do |t|
+        substr = chars.slice(pos, t).join
         k = ROMAJI2KANA[substr]
         if k
           kana += k
@@ -22,10 +37,10 @@ module Romaji
         end
       end
       unless k
-        kana += scoped_kcode('u'){text.split(//).slice(pos, 1).join}
+        kana += chars.slice(pos, 1).join
         pos += 1
       end
-      break if pos >= scoped_kcode('u'){text.split(//).size}
+      break if pos >= chars.size
     end
 
     kana_type = options[:kana_type] || :katakana
@@ -38,26 +53,49 @@ module Romaji
     text = hira2kata(normalize(text))
     pos = 0
     k = nil
-    kana = ''
+    romaji = ''
+    chars =  scoped_kcode('u'){text.split(//)}
     while true
-      Romaji::ROMAJI_MAX_LENGTH.downto(1) do |t|
-        substr =  scoped_kcode('u'){text.split(//).slice(pos, t).join}
+      # ン
+      if chars[pos] == 'ン'
+        next_char_romaji = KANA2ROMAJI[chars[pos + 1]]
+        if next_char_romaji && ['p', 'b', 'm'].include?(next_char_romaji[0].slice(0,1))
+          romaji += 'm'
+        else
+          romaji += 'n'
+        end
+        pos += 1
+        next
+      end
+
+      # ッ
+      if chars[pos] == 'ッ'
+        next_char_romaji = KANA2ROMAJI[chars[pos + 1]]
+        if ['a', 'i', 'u', 'e', 'o', 'n', nil].include?(chars[pos + 1])
+          romaji += 'xtsu'
+        else
+          romaji += (next_char_romaji[0].slice(0,1))
+        end
+        pos += 1
+        next
+      end
+
+      ROMAJI_MAX_LENGTH.downto(1) do |t|
+        substr = chars.slice(pos, t).join
         k = KANA2ROMAJI[substr]
         if k
-          kana += k[0]
+          romaji += k[0]
           pos += t
           break
         end
       end
       unless k
-        kana += scoped_kcode('u'){text.split(//).slice(pos, 1).join}
+        romaji += chars.slice(pos, 1).join
         pos += 1
       end
-      break if pos >= scoped_kcode('u'){text.split(//).size}
-      #text = hira2kata(normalize(text))
-      #return 'kyoumoshinaitone'
+      break if pos >= chars.size
     end
-    kana
+    romaji
   end
 
   def self.hira2kata(text)
