@@ -11,7 +11,7 @@ module Romaji
     pos = 0
     k = nil
     kana = ''
-    chars =  scoped_kcode('u'){text.split(//)}
+    chars =  text.split(//u)
     while true
       # ン
       if chars[pos] == 'm' && ['p', 'b', 'm'].include?(chars[pos + 1])
@@ -54,7 +54,7 @@ module Romaji
     pos = 0
     k = nil
     romaji = ''
-    chars =  scoped_kcode('u'){text.split(//)}
+    chars =  text.split(//u)
     while true
       # ン
       if chars[pos] == 'ン'
@@ -108,18 +108,5 @@ module Romaji
 
   def self.normalize(text)
     NKF.nkf('-mZ0Wwh0', text).downcase
-  end
-
-  def self.scoped_kcode(kcode)
-    if RUBY_VERSION == '1.8.7'
-      begin
-        origin, $KCODE = $KCODE, kcode
-        yield
-      ensure
-        $KCODE = origin
-      end
-    else
-      yield
-    end
   end
 end
