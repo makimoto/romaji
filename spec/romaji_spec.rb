@@ -27,14 +27,7 @@ describe Romaji do
     Romaji.kana2romaji('トットリ').should == 'tottori'
   end
   
-  describe Romaji::StringExtension do
-    before  do
-      @kana = 'ｽｼ'
-      @romaji = 'ｓＵsｈi'
-      @kana.extend(Romaji::StringExtension)
-      @romaji.extend(Romaji::StringExtension)
-    end
-
+  shared_examples_for 'String extension' do
     it 'should extend String#normalize' do
       @kana.normalize.should == 'スシ'
       @kana.should == 'ｽｼ'
@@ -76,5 +69,26 @@ describe Romaji do
       @romaji.romaji!
       @romaji.should == 'sushi'
     end
+  end
+
+  describe Romaji::StringExtension do
+    before  do
+      @kana = 'ｽｼ'
+      @romaji = 'ｓＵsｈi'
+      @kana.extend(Romaji::StringExtension)
+      @romaji.extend(Romaji::StringExtension)
+    end
+
+    it_behaves_like 'String extension'
+  end
+
+  describe 'romaji/core_ext/string' do
+    require 'romaji/core_ext/string'
+    before  do
+      @kana = 'ｽｼ'
+      @romaji = 'ｓＵsｈi'
+    end
+
+    it_behaves_like 'String extension'
   end
 end
