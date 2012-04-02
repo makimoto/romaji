@@ -1,9 +1,9 @@
 # coding: utf-8
 
-require 'romaji/version'
 require 'nkf'
 require 'romaji/string_extension'
 require 'romaji/constants'
+require 'romaji/version'
 
 module Romaji
   def self.romaji2kana(text, options = {})
@@ -112,13 +112,14 @@ module Romaji
 
   def self.scoped_kcode(kcode)
     if RUBY_VERSION == '1.8.7'
-      origin = $KCODE
-      $KCODE = kcode
-      result = yield
-      $KCODE = origin
+      begin
+        origin, $KCODE = $KCODE, kcode
+        yield
+      ensure
+        $KCODE = origin
+      end
     else
-      result = yield
+      yield
     end
-    result
   end
 end
