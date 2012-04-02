@@ -7,7 +7,7 @@ require 'romaji/constants'
 
 module Romaji
   def self.romaji2kana(text, options = {})
-    text = hira2kata(normalize(text))
+    text = hira2kata(self.normalize(text))
     pos = 0
     k = nil
     kana = ''
@@ -50,7 +50,7 @@ module Romaji
   end
 
   def self.kana2romaji(text)
-    text = hira2kata(normalize(text))
+    text = hira2kata(self.normalize(text))
     pos = 0
     k = nil
     romaji = ''
