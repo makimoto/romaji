@@ -1,5 +1,6 @@
 # coding: utf-8
-require File.expand_path('../lib/romaji/version', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+require 'romaji/version'
 
 Gem::Specification.new do |gem|
   gem.authors       = ['Shimpei Makimoto']
