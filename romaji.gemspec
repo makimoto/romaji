@@ -5,8 +5,8 @@ require 'romaji/version'
 Gem::Specification.new do |gem|
   gem.authors       = ['Shimpei Makimoto']
   gem.email         = ['makimoto@tsuyabu.in']
-  gem.description   = 'Yet another romaji to kana / kana to romaji transliterator'
-  gem.summary       = 'Yet another romaji to kana / kana to romaji transliterator'
+  gem.description   = 'Yet another Romaji-Kana transliterator'
+  gem.summary       = 'Yet another Romaji-Kana transliterator'
   gem.homepage      = "https://github.com/makimoto/romaji"
 
   gem.files         = `git ls-files`.split($\)
