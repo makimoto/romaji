@@ -71,7 +71,7 @@ module Romaji
       # ッ
       if chars[pos] == 'ッ'
         next_char_romaji = KANA2ROMAJI[chars[pos + 1]]
-        if ['a', 'i', 'u', 'e', 'o', 'n', nil].include?(chars[pos + 1])
+        if ['a', 'i', 'u', 'e', 'o', 'n', nil].include?(chars[pos + 1]) || next_char_romaji.nil?
           romaji += 'xtsu'
         else
           romaji += (next_char_romaji[0].slice(0,1))

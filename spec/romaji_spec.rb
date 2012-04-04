@@ -25,6 +25,7 @@ describe Romaji do
     Romaji.kana2romaji('シンバシ').should == 'shimbashi'
     Romaji.kana2romaji('キンカクジ').should == 'kinkakuji'
     Romaji.kana2romaji('トットリ').should == 'tottori'
+    Romaji.kana2romaji('菜っ葉').should == '菜xtsu葉'
   end
   
   shared_examples_for 'String extension' do
