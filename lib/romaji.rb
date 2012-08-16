@@ -21,7 +21,7 @@ module Romaji
       end
 
       # ッ
-      if chars[pos] == chars[pos + 1] && !['a', 'i', 'u', 'e', 'o', 'n'].include?(chars[pos])
+      if chars[pos] == chars[pos + 1] && !['a', 'i', 'u', 'e', 'o', 'n'].include?(chars[pos]) && chars[pos] =~ /[a-z]/
         kana += 'ッ'
         pos += 1
         next

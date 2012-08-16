@@ -12,6 +12,7 @@ describe Romaji do
       Romaji.romaji2kana('shimbashi').should == 'シンバシ'
       Romaji.romaji2kana('kinkakuji').should == 'キンカクジ'
       Romaji.romaji2kana('tottori').should == 'トットリ'
+      Romaji.romaji2kana('イイハナシダナー').should == 'イイハナシダナー'
     end
 
     it 'should transliterate with kana_type' do
