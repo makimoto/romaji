@@ -11,8 +11,8 @@ Yet another Romaji-Kana transliterator.
 ## Usage
     require "romaji"
     Romaji.kana2romaji "スシ" #=> "sushi"
-    Romaji.kana2romaji "sushi" #=> "スシ"
-    Romaji.kana2romaji "sushi", :kana_type => :hiragana #=> "すし"
+    Romaji.romaji2kana "sushi" #=> "スシ"
+    Romaji.romaji2kana "sushi", :kana_type => :hiragana #=> "すし"
 
     require "romaji/core_ext/string"
     "sushi".kana #=> "スシ"
