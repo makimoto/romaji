@@ -24,7 +24,10 @@ Yet another Romaji-Kana transliterator.
     a.romaji!
     p a #=> "sushi"
 
-
 ## Author
 
 Shimpei Makimoto
+
+## Licence
+
+[MIT](http://makimoto.mit-license.org)
