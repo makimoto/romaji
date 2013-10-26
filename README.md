@@ -1,6 +1,7 @@
 # Romaji
 
 [![Build Status](https://secure.travis-ci.org/makimoto/romaji.png?branch=master)](http://travis-ci.org/makimoto/romaji)
+[![Coverage Status](https://coveralls.io/repos/makimoto/romaji/badge.png?branch=master)](https://coveralls.io/r/makimoto/romaji)
 
 Yet another Romaji-Kana transliterator.
 
