@@ -45,7 +45,7 @@ module Romaji
 
     kana_type = options[:kana_type] || :katakana
     kana = kata2hira(kana) if :hiragana == kana_type.to_sym
-      
+
     return kana
   end
 
@@ -61,6 +61,8 @@ module Romaji
         next_char_romaji = KANA2ROMAJI[chars[pos + 1]]
         if next_char_romaji && ['p', 'b', 'm'].include?(next_char_romaji[0].slice(0,1))
           romaji += 'm'
+        elsif next_char_romaji && ['a', 'i', 'u', 'e', 'o'].include?(next_char_romaji[0].slice(0,1))
+          romaji += 'nn'
         else
           romaji += 'n'
         end
