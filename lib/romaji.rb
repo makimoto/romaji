@@ -63,6 +63,8 @@ module Romaji
           romaji += 'm'
         elsif next_char_romaji && ['a', 'i', 'u', 'e', 'o'].include?(next_char_romaji[0].slice(0,1))
           romaji += 'nn'
+        elsif next_char_romaji && next_char_romaji[0] == 'ya'
+          romaji += 'nn'
         else
           romaji += 'n'
         end
