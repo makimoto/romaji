@@ -80,7 +80,7 @@ module Romaji
         next
       end
 
-      ROMAJI_MAX_LENGTH.downto(1) do |t|
+      KANA_MAX_LENGTH.downto(1) do |t|
         substr = chars.slice(pos, t).join
         k = KANA2ROMAJI[substr]
         if k
