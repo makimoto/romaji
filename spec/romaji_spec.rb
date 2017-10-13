@@ -31,6 +31,7 @@ describe Romaji do
     Romaji.kana2romaji('ウィリアム').should == 'wiriamu'
     Romaji.kana2romaji('デューク').should == 'dhu-ku'
     Romaji.kana2romaji('アツリョクナベ').should == 'atsuryokunabe'
+    Romaji.kana2romaji('ツァツィツゥツェツォ').should == 'tsuxatsuxitsuxutsuxetsuxo'
   end
   
   shared_examples_for 'String extension' do
