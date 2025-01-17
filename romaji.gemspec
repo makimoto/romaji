@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.version       = Romaji::VERSION
 
   gem.add_dependency('rake', '>= 0.8.0')
+  gem.add_dependency('nkf', '>= 0.2.0')
   gem.add_development_dependency('rspec', '>= 2.8.0')
   gem.add_development_dependency('pry', ['>= 0'])
   gem.add_development_dependency('guard', '>= 1.0.1')
